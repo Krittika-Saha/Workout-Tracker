@@ -3,7 +3,7 @@ from datetime import datetime
 
 GENDER = "YOUR_GENDER"
 WEIGHT_IN_KG = YOUR_WEIGHT
-HEIGHT_IN_CM =  YOUR_HEIGHT
+HEIGHT_IN_CM = YOUR_HEIGHT
 AGE = YOUR_AGE
 
 APP_ID = "YOUR_APPID"
@@ -41,5 +41,12 @@ for i in result["exercises"]:
         }
     }
 
-    sheet_response = requests.post(sheety_endpoint, json=sheet_inputs)
-    print(sheet_response.text)
+    # Bearer Token Authentication
+    bearer_headers = {
+        "Authorization": "Bearer YOUR_TOKEN"
+    }
+    sheet_response = requests.post(
+        sheety_endpoint,
+        json=sheet_inputs,
+        headers=bearer_headers
+    )
